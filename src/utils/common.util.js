@@ -1,0 +1,42 @@
+import { notification } from "antd";
+
+const showNotification = (type = "error", msg = "Something went wrong") => {
+    notification[type]({
+        message: msg,
+        duration: 2
+    });
+};
+
+
+const login_user = (data) => {
+    if (data?.user_token) {
+        var expires = "";
+        if (days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = "u_token=" + data?.user_token + expires + "; path=/";
+    }
+};
+
+const check_login = () => {
+    let cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) == ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf("u_token") == 0) {
+            return cookie.substring("u_token".length, cookie.length);
+        }
+    }
+    return false;
+};
+
+const logout_user = () => {
+    document.cookie = 'u_token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+};
+
+
+export { login_user, check_login, logout_user, showNotification };
