@@ -5,6 +5,7 @@ import Dashboard from "./pages/home/home";
 import Login from "./pages/login/login";
 
 import 'antd/dist/antd.css'
+import Register from "./pages/register/register";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Switch>
             <Route path={`${process.env.PUBLIC_URL}/`} exact component={Dashboard} />
             <Route path={`${process.env.PUBLIC_URL}/login`} exact component={Login} />
+            <Route path={`${process.env.PUBLIC_URL}/register`} exact component={Register} />
         </Switch>
     );
 }
