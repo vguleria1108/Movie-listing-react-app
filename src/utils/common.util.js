@@ -36,5 +36,17 @@ const logout_user = () => {
     document.cookie = 'u_token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 };
 
+let debounceTimer
+const debouncer = (func, delay) => {
+    return function () {
+        const context = this
+        const args = arguments
+        clearTimeout(debounceTimer)
+        debounceTimer
+            = setTimeout(() => func.apply(context, args), delay)
+    }
+}
 
-export { login_user, check_login, logout_user, showNotification };
+
+
+export { login_user, check_login, logout_user, showNotification, debouncer };

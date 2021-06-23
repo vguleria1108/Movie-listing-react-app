@@ -7,6 +7,7 @@ import {
     LinkedinOutlined,
     FileSearchOutlined,
 } from "@ant-design/icons";
+import { check_login } from "../../utils/common.util";
 const { Sider, Content } = antLayout;
 
 export class Layout extends Component {
@@ -28,7 +29,7 @@ export class Layout extends Component {
 
                     </div>
                     <div className="layoutBody" >
-                        <div className="sliderWrapper">
+                        {check_login() ? <div className="sliderWrapper">
                             <Sider
                                 breakpoint="lg"
                                 collapsedWidth="0"
@@ -59,7 +60,7 @@ export class Layout extends Component {
                                 </Menu>
                             </Sider>
                         </div>
-                        <Content>{this.props.children}</Content>
+                            : ""}<Content>{this.props.children}</Content>
 
                     </div>
                 </div>

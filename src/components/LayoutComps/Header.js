@@ -15,7 +15,7 @@ const Header = props => {
                     <div
                         className="brand-logo"
                     >
-                        <Link to={process.env.PUBLIC_URL + "/dashboard"}>
+                        <Link to={process.env.PUBLIC_URL}>
                             <div className="logo">
                                 <FileSearchOutlined />
                                 <span>Movie Search</span>
@@ -25,13 +25,10 @@ const Header = props => {
                 </div>
                 {!check_login() ?
                     <div className="loggedOutStateOpt" style={{ display: 'flex' }}>
-                        <div className="loginBtn primaryBtn-1" onClick={() => history.push(process.env.PUBLIC_URL + '/login')}>
+                        <div className="loginBtn primaryBtn" onClick={() => history.push(process.env.PUBLIC_URL + '/login')}>
                             Log In
                         </div>
-                        <div className="signUpBtn primaryBtn-2" onClick={() => history.push(process.env.PUBLIC_URL + '/signup')}>
-                            Sign Up
-                        </div>
-                    </div> : <div className="primaryBtn-1" onClick={() => { logout_user() }}>Log Out</div>}
+                    </div> : <div className="primaryBtn" onClick={() => { logout_user(); history.push("/login") }}>Log Out</div>}
 
             </div>
 

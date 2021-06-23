@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Layout from "../../components/LayoutComps/Layout";
+import { check_login, showNotification } from "../../utils/common.util";
 import "./register.css";
 
 export default function Register(props) {
-  useEffect(() => {}, []);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (check_login()) {
+      showNotification("success", "You are already logged in");
+      history.push("/dashboard");
+    }
+  }, []);
+
+  const handleUserRegister = (e) => {
+    e.preventDefault();
+    showNotification("success", "Registeration successfull, please login");
+    history.push("/login");
+  };
+
   return (
     <>
       <Layout>
@@ -11,7 +27,7 @@ export default function Register(props) {
           <div>
             <div className="formHolder">
               <h1>Create Account</h1>
-              <form>
+              <form onSubmit={handleUserRegister}>
                 <input
                   type="text"
                   id="name"
@@ -41,7 +57,8 @@ export default function Register(props) {
                   placeholder="Password"
                 />
                 <input type="submit" value="Create Account" />
-                Already have an account? <a> Log In</a>
+                Already have an account?{" "}
+                <a onClick={() => history.push("/login")}> Log In</a>
               </form>
             </div>
           </div>
