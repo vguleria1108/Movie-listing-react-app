@@ -1,12 +1,21 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch, useHistory } from "react-router-dom";
 import { render } from "react-dom";
 import Dashboard from "./pages/dashboard/dashboard";
 import Login from "./pages/login/login";
 import "./index.css"
 import 'antd/dist/antd.css'
 import Register from "./pages/register/register";
+import { check_login } from "./utils/common.util";
 
+function HandleRedirect() {
+    const history = useHistory()
+    if (check_login()) {
+        history.push("/dashboard")
+    } else
+        history.push("/login")
+    return;
+}
 
 function App() {
     return (
@@ -14,6 +23,14 @@ function App() {
             <Route path={`${process.env.PUBLIC_URL}/dashboard`} exact component={Dashboard} />
             <Route path={`${process.env.PUBLIC_URL}/login`} exact component={Login} />
             <Route path={`${process.env.PUBLIC_URL}/register`} exact component={Register} />
+            <Route render={() => {
+                return (
+                    check_login() ?
+                        <Redirect to="/dashboard" /> :
+                        <Redirect to="/login" />
+                )
+
+            }} />
         </Switch>
     );
 }
