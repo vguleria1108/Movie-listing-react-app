@@ -1,13 +1,33 @@
-.ant-layout-sider-zero-width-trigger {
-  top: 7px !important;
-}
-.sliderLayout {
-  z-index: 1000;
-  height: 100%;
-}
 .menuWrapper {
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+.movieListWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.movieListWrapper .movieListing {
+  flex: 8;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, auto));
+}
+
+@media screen and (max-width: 450px) {
+  .movieCardWrapper {
+    width: 160px !important;
+    height: 240px !important;
+    font-size: 10px;
+  }
+  .movieListWrapper .movieListing {
+    grid-template-columns: repeat(auto-fill, minmax(160px, auto));
+  }
+  .movieCardWrapper .movieImg {
+    height: 163px !important;
+  }
+  .movieCardWrapper .movieName {
+    height: 35px;
+    overflow: hidden;
+  }
 }
