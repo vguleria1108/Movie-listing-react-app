@@ -114,6 +114,19 @@ input[type="submit"] {
   font-size: 15px;
 }
 
+.validator {
+  display: flex;
+  align-items: center;
+}
+
+.validator .error {
+  color: red;
+}
+
+.validator .success {
+  color: chartreuse;
+}
+
 @media screen and (max-width: 450px) {
   .sliderLayout {
     position: fixed !important;

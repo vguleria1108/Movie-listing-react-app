@@ -12,6 +12,8 @@ export default function Login(props) {
   const history = useHistory();
 
   useEffect(() => {
+    //check if user is logged in
+
     if (check_login()) {
       showNotification("success", "You are already logged in");
       history.push("/dashboard");
@@ -34,10 +36,9 @@ export default function Login(props) {
               <h1>Log In</h1>
               <form onSubmit={(e) => loginUser(e)}>
                 <input
-                  type="email"
                   id="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Username or Email"
                   required="true"
                 />
                 <input

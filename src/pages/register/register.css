@@ -4,3 +4,18 @@
   display: flex;
   justify-content: center;
 }
+.validation-icon,
+.error,
+.success {
+  display: inline-block;
+  margin-right: 0.5em;
+  width: 1.25em;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: #11af41;
+}

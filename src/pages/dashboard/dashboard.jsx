@@ -22,6 +22,7 @@ export default function Dashboard(props) {
 
   useEffect(() => {
     setSpinning(true);
+    //check if user is logged in
     if (!check_login()) {
       showNotification("info", "Please login to view dashboard");
       history.push("/login");
@@ -68,6 +69,7 @@ export default function Dashboard(props) {
   };
 
   const handleSearch = (e) => {
+    //debouncing api request
     debouncer(function () {
       getMoviesData(e.target.value);
     }, 200)();
