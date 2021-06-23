@@ -1,0 +1,25 @@
+.logo svg {
+  font-size: 30px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: #fff;
+}
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0 !important;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #0879ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

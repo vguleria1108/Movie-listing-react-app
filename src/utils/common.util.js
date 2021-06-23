@@ -10,12 +10,10 @@ const showNotification = (type = "error", msg = "Something went wrong") => {
 
 const login_user = (data) => {
     if (data?.user_token) {
-        var expires = "";
-        if (days) {
-            let date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
+        let expires = "";
+        let date = new Date();
+        date.setTime(date.getTime() + (2 * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
         document.cookie = "u_token=" + data?.user_token + expires + "; path=/";
     }
 };

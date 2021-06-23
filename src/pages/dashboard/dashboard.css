@@ -1,0 +1,13 @@
+.ant-layout-sider-zero-width-trigger {
+  top: 7px !important;
+}
+.sliderLayout {
+  z-index: 1000;
+  height: 100%;
+}
+.menuWrapper {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
