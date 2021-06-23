@@ -7,6 +7,7 @@ import {
   showNotification,
   debouncer,
   check_login,
+  scrollToTop,
 } from "../../utils/common.util";
 import axios from "axios";
 import { Pagination, Empty, Spin } from "antd";
@@ -39,16 +40,12 @@ export default function Dashboard(props) {
     setSpinning(false);
   }, [movieResData, currentPage]);
 
-  const scrollToTop = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  };
-
   //was not able to find api that only return fixed amount of results at a time
   const getMoviesData = (val = "") => {
-    let apiKey = "k_iof19z2i";
+    let apiKey = "k_8dw82pq1";
     setSpinning(true);
     let mode = "trending";
+    setCurrentPage(0);
     let apiUrl = "https://imdb-api.com/en/API/Top250Movies/" + apiKey;
 
     if (val !== "") {
@@ -59,6 +56,7 @@ export default function Dashboard(props) {
       .get(apiUrl)
       .then((res) => {
         if (res.data) {
+          console.log("ddd", mode);
           let movieList = mode === "search" ? res.data.results : res.data.items;
           setMovieResDate(movieList);
         } else showNotification("error", "Unable to fetch movies");
@@ -85,6 +83,7 @@ export default function Dashboard(props) {
             onChange={handleSearch}
           />
           <Spin tip="Fetching Movies..." spinning={isSpining}>
+            {console.log(movieData)}
             {movieData.length > 0 ? (
               <>
                 <div className="movieListing">

@@ -31,32 +31,6 @@ const Header = props => {
                     </div> : <div className="primaryBtn" onClick={() => { logout_user(); history.push("/login") }}>Log Out</div>}
 
             </div>
-
-            <style jsx>
-                {`
-                    .navbar-container {
-                        height: 54px;
-                        background:#001529;
-                        box-shadow: 0px 5px 11px 0px rgba(50,50,50,0.08);
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        z-index: 1000;
-                        padding-right: 30px;
-                        padding-left: 30px;
-                        align-items: center;
-                        display: flex;
-                        justify-content: space-between;
-                    }
-                    .navbar-container .brand-logo {
-                        margin-right: 2.4rem;
-                    }
-                    .loginBtn, .signUpBtn{
-                        height: 35px;
-                    }
-                `}
-            </style>
         </>
     );
 };
